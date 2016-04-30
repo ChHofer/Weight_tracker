@@ -31,8 +31,8 @@ public class MainActivityFragment extends Fragment {
         super.onCreate(savedInstanceState);
         userLocalstore = new UserLocalStore(getContext());
         user = userLocalstore.getSettings();
-        float current_w = Float.parseFloat(user.current_weight);
-        float height_inch = Float.parseFloat(user.height) * 12;
+        float current_w = Float.parseFloat(user.getCurrent_weight());
+        float height_inch = Float.parseFloat(user.getHeight()) * 12;
 
         DecimalFormat df = new DecimalFormat("###,###.0");
         d_bmi = (current_w * 703)/Math.pow(height_inch,2);
@@ -51,9 +51,9 @@ public class MainActivityFragment extends Fragment {
         tv_bmi = (TextView) v.findViewById(R.id.summary_tv_bmi);
         img_bmi = (ImageView) v.findViewById(R.id.img_bmi);
 
-        tv_start_weight.setText(user.start_weight);
-        tv_current_weight.setText(user.current_weight);
-        tv_goal_weight.setText(user.goal_weight);
+        tv_start_weight.setText(user.getStart_weight());
+        tv_current_weight.setText(user.getCurrent_weight());
+        tv_goal_weight.setText(user.getGoal_weight());
         tv_bmi.setText(bmi);
         if( d_bmi >= 18.5 && d_bmi < 25.0 ){
             img_bmi.setImageResource(R.drawable.ok);

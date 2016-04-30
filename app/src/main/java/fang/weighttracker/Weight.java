@@ -9,13 +9,15 @@ import java.util.UUID;
  */
 public class Weight {
     private UUID mId;
-    private String mWeight = "100.0";
+    private String mWeight;
     private Date mDate;
+    private User user = User.getUser();
 
 
     public Weight(){
         mId = UUID.randomUUID();
         mDate = new Date();
+        mWeight = user.getCurrent_weight();
     }
 
     public UUID getId() {

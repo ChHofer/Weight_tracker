@@ -7,21 +7,22 @@ import android.content.SharedPreferences;
  * Created by Fang2 on 2016/4/26.
  */
 public class UserLocalStore{
-    public static final String SETTINGS = "userSettings";
-    public static SharedPreferences userLocalStoredb;
+    private static final String SETTINGS = "userSettings";
+    private static SharedPreferences userLocalStoredb;
+    private User user = User.getUser();
     public  UserLocalStore(Context context){
         userLocalStoredb = context.getSharedPreferences(SETTINGS,Context.MODE_PRIVATE);
     }
     public void storeSettings(User user){
         SharedPreferences.Editor editor = userLocalStoredb.edit();
-        editor.putInt("gender", user.gender);
-        editor.putInt("unit", user.unit);
-        editor.putInt("language", user.language);
-        editor.putString("height", user.height);
-        editor.putString("start_weight", user.start_weight);
-        editor.putString("current_weight", user.current_weight);
-        editor.putString("goal_weight", user.goal_weight);
-        editor.putString("goal_date", user.goal_date);
+        editor.putInt("gender", user.getGender());
+        editor.putInt("unit", user.getUnit());
+        editor.putInt("language", user.getLanguage());
+        editor.putString("height", user.getHeight());
+        editor.putString("start_weight", user.getStart_weight());
+        editor.putString("current_weight", user.getCurrent_weight());
+        editor.putString("goal_weight", user.getGoal_weight());
+        editor.putString("goal_date", user.getGoal_date());
         editor.apply();
     }
 
@@ -42,7 +43,7 @@ public class UserLocalStore{
         String goal_date = userLocalStoredb.getString("goal_date","");
 
 
-        User storedSettings = new User(gender, unit,language,height, start_weight,
+        User storedSettings = user.updateUser(gender, unit,language,height, start_weight,
                 current_weight,goal_weight,goal_date);
         return storedSettings;
     }

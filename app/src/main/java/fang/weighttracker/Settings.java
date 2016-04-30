@@ -23,7 +23,7 @@ public class Settings extends AppCompatActivity {
     private EditText et_height,et_start_weight,et_goal_weight,et_goal_date;
     private Button btn_save;
     private TextView tv_cancel;
-    private static User user;
+    private static User user = User.getUser();
     private UserLocalStore userLocalstore;
 
 
@@ -56,7 +56,7 @@ public class Settings extends AppCompatActivity {
             String goal_weight =  "160.0";
             String goal_date = new Date().toString();
 
-            user = new User(selected_gender,selected_unit,selected_language,height, start_weight,
+            user = user.updateUser(selected_gender,selected_unit,selected_language,height, start_weight,
                     current_weight, goal_weight, goal_date);
             userLocalstore.storeSettings(user);
         } else{
@@ -64,13 +64,13 @@ public class Settings extends AppCompatActivity {
             user = userLocalstore.getSettings();
         }
 
-        rg_gender.check(user.gender);
-        rg_unit.check(user.unit);
-        rg_language.check(user.language);
-        et_height.setText(user.height);
-        et_start_weight.setText(user.start_weight);
-        et_goal_weight.setText(user.goal_weight);
-        et_goal_date.setText(user.goal_date);
+        rg_gender.check(user.getGender());
+        rg_unit.check(user.getUnit());
+        rg_language.check(user.getLanguage());
+        et_height.setText(user.getHeight());
+        et_start_weight.setText(user.getStart_weight());
+        et_goal_weight.setText(user.getGoal_weight());
+        et_goal_date.setText(user.getGoal_date());
 
 
         btn_save = (Button) findViewById(R.id.setting_btn_save);
@@ -93,7 +93,7 @@ public class Settings extends AppCompatActivity {
                 DecimalFormat df2 = new DecimalFormat("###,###.0");
                 start_weight = df2.format(f_start_weight);
 
-                String current_weight = user.current_weight;
+                String current_weight = user.getCurrent_weight();
 
                 String goal_weight = et_goal_weight.getText().toString();
                 float f_goal_weight = Float.parseFloat(goal_weight);
@@ -104,7 +104,7 @@ public class Settings extends AppCompatActivity {
 
 
 
-                user = new User(selected_gender,selected_unit,selected_language,height, start_weight,
+                user = user.updateUser(selected_gender,selected_unit,selected_language,height, start_weight,
                         current_weight, goal_weight,goal_date);
 
                 userLocalstore.storeSettings(user);
