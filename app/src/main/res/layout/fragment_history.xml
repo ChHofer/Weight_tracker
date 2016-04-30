@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:background="#E1F5FE"
+              tools:context="fang.weighttracker.HistoryActivityFragment"
+              tools:showIn="@layout/activity_history">
+
+    <com.natasa.progressviews.CircleProgressBar
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/circle_progress"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:bar_width="15dp"
+        app:bar_color="#b5b6b9"
+        app:progress="55"
+        app:progress_color="#d3f115"
+        app:progress_width="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:gravity="right"
+        android:text="Unit: LB/FT"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/weight_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+/>
+
+</LinearLayout>
