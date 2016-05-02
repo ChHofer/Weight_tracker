@@ -100,11 +100,19 @@ public class NewWeightFragment extends Fragment {
             public void onClick(View view) {
                 String st_new_weight = et_New_Weight.getText().toString();
                 float new_weight = Float.parseFloat(st_new_weight);
-                DecimalFormat df = new DecimalFormat("######.0");
-                mWeight.setWeight(df.format(new_weight));
-                userLocalstore.storeCurrentWeight(mWeight);
-                Intent intent = new Intent(getActivity(), History.class);
-                startActivity(intent);
+                if(new_weight < 50.0 || new_weight > 500.0) {
+                    View focusView;
+                    et_New_Weight.setError("Please enter between 50 - 500 lbs");
+                    focusView = et_New_Weight;
+                    focusView.requestFocus();
+                }else {
+
+                    DecimalFormat df = new DecimalFormat("######.0");
+                    mWeight.setWeight(df.format(new_weight));
+                    userLocalstore.storeCurrentWeight(mWeight);
+                    Intent intent = new Intent(getActivity(), History.class);
+                    startActivity(intent);
+                }
             }
         });
         img_delete.setOnClickListener(new View.OnClickListener() {

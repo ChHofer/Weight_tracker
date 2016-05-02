@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:editable="false"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:src="@drawable/delete_icon"
+            android:src="@drawable/delete"
             android:layout_gravity="right"/>
 
     </LinearLayout>

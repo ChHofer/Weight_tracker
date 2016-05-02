@@ -6,7 +6,7 @@
         <item
             android:id="@+id/overview"
             android:checked="false"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/navigation_summary"/>
 
         <item
