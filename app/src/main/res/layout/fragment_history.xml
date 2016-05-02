@@ -8,23 +8,11 @@
               tools:context="fang.weighttracker.HistoryActivityFragment"
               tools:showIn="@layout/activity_history">
 
-    <com.natasa.progressviews.CircleProgressBar
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:id="@+id/circle_progress"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:bar_width="15dp"
-        app:bar_color="#b5b6b9"
-        app:progress="55"
-        app:progress_color="#d3f115"
-        app:progress_width="15dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="50dp"
-        android:paddingBottom="20dp"
+        android:layout_margin="20dp"
         android:gravity="right"
         android:text="Unit: LB/FT"/>
 

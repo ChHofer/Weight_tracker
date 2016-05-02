@@ -1,6 +1,5 @@
-package fang.weighttracker;
+package fang.weighttracker.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,9 +12,11 @@ public class Weight {
     private Date mDate;
     private User user = User.getUser();
 
-
     public Weight(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+    public Weight(UUID id){
+        mId = id;
         mDate = new Date();
         mWeight = user.getCurrent_weight();
     }

@@ -3,7 +3,6 @@ package fang.weighttracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -14,13 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
+import fang.weighttracker.model.UserLocalStore;
+import fang.weighttracker.model.Weight;
+import fang.weighttracker.model.WeightDbSchema;
+import fang.weighttracker.model.WeightLab;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,7 +36,8 @@ public class NewWeightFragment extends Fragment {
     private SimpleDateFormat formatter = new SimpleDateFormat("E yyyy-MM-dd");
     private Weight mWeight;
     private EditText et_New_Weight, et_New_Date;
-    private Button btn_back;
+    private ImageView img_delete;
+    private Button btn_save;
 
     private static UserLocalStore userLocalstore;
 
@@ -57,6 +62,14 @@ public class NewWeightFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+        WeightLab.get(getActivity())
+                .updateWeight(mWeight);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -64,34 +77,14 @@ public class NewWeightFragment extends Fragment {
 
         et_New_Weight = (EditText) v.findViewById(R.id.et_new_weight_value);
         et_New_Date = (EditText) v.findViewById(R.id.et_new_date_value);
-        btn_back = (Button) v.findViewById(R.id.btn_back);
+        btn_save = (Button) v.findViewById(R.id.new_weight_btn_save);
+        img_delete = (ImageView) v.findViewById(R.id.img_delete_weight);
 
         et_New_Weight.setText(mWeight.getWeight());
         String date = formatter.format(mWeight.getDate());
         et_New_Date.setText(date);
         userLocalstore.storeCurrentWeight(mWeight);
 
-        et_New_Weight.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                float new_weight = Float.parseFloat(charSequence.toString());
-                DecimalFormat df = new DecimalFormat("###,###.0");
-
-                mWeight.setWeight(df.format(new_weight));
-                userLocalstore.storeCurrentWeight(mWeight);
-                Toast.makeText(getActivity(), "Weight Saved!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         et_New_Date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,13 +94,23 @@ public class NewWeightFragment extends Fragment {
                 dialog.show(manager, DIALOG_DATE);
             }
         });
-        final String str_new_weight = et_New_Weight.getText().toString();
-        final String str_new_date = et_New_Date.getText().toString();
-        btn_back.setOnClickListener(new View.OnClickListener() {
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                String st_new_weight = et_New_Weight.getText().toString();
+                float new_weight = Float.parseFloat(st_new_weight);
+                DecimalFormat df = new DecimalFormat("######.0");
+                mWeight.setWeight(df.format(new_weight));
+                userLocalstore.storeCurrentWeight(mWeight);
+                Intent intent = new Intent(getActivity(), History.class);
+                startActivity(intent);
+            }
+        });
+        img_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WeightLab.get(getContext()).deleteWeight(mWeight);
                 Intent intent = new Intent(getActivity(), History.class);
                 startActivity(intent);
             }

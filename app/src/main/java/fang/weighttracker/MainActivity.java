@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import fang.weighttracker.model.Weight;
+import fang.weighttracker.model.WeightLab;
+
 public class MainActivity extends AppCompatActivity {
 
     //Defining Variables
@@ -23,22 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // Initializing Toolbar and setting it as the actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -134,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.bn_new_weight:
                 Weight weight = new Weight();
-                List<Weight> mWeights =WeightLab.get(this).getWeights();
-                mWeights.add(weight);
+                WeightLab.get(this).addWeight(weight);
                 Intent intent = WeightPager
                         .newIntent(this, weight.getId());
                 startActivity(intent);

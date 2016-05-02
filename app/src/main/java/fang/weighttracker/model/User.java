@@ -1,8 +1,4 @@
-package fang.weighttracker;
-
-import android.content.Context;
-
-import java.util.Date;
+package fang.weighttracker.model;
 
 /**
  * Created by Fang2 on 2016/4/22.

@@ -1,4 +1,4 @@
-package fang.weighttracker;
+package fang.weighttracker.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;

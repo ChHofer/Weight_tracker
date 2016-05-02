@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E1F5FE"
         android:orientation="vertical">
+
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
@@ -170,6 +172,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_summary_weight_loss_to_date"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -180,6 +183,7 @@
                 android:textColor="@android:color/white"
                 android:text="@string/label_weight_loss_to_date"/>
             <TextView
+                android:id="@+id/tv_summary_weekly_weekly_loss"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"

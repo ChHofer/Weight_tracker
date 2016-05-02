@@ -1,9 +1,6 @@
 package fang.weighttracker;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +12,11 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+
+import fang.weighttracker.model.User;
+import fang.weighttracker.model.UserLocalStore;
+import fang.weighttracker.model.Weight;
+import fang.weighttracker.model.WeightLab;
 
 public class Settings extends AppCompatActivity {
 
@@ -59,6 +61,13 @@ public class Settings extends AppCompatActivity {
             user = user.updateUser(selected_gender,selected_unit,selected_language,height, start_weight,
                     current_weight, goal_weight, goal_date);
             userLocalstore.storeSettings(user);
+            Weight weight = new Weight();
+            weight.setDate(new Date());
+            weight.setWeight(current_weight);
+
+            WeightLab.get(this).addWeight(weight);
+
+
         } else{
             tv_cancel.setVisibility(View.VISIBLE);
             user = userLocalstore.getSettings();

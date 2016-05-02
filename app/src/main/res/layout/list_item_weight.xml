@@ -26,10 +26,10 @@
 
     <TextView
         android:id="@+id/list_item_weight_diff"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:textSize="18dp"
-        android:text="Changes"/>
+        android:text=""/>
+
 
 </LinearLayout>

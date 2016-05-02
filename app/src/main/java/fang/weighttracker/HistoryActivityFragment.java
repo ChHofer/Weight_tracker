@@ -1,10 +1,8 @@
 package fang.weighttracker;
 
 import android.content.Intent;
-import android.content.pm.ProviderInfo;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +12,10 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import fang.weighttracker.model.User;
+import fang.weighttracker.model.Weight;
+import fang.weighttracker.model.WeightLab;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -38,8 +40,14 @@ public class HistoryActivityFragment extends Fragment {
         WeightLab weightLab = WeightLab.get(getActivity());
         List<Weight> weights = weightLab.getWeights();
 
-        mAdapter = new WeightAdapter(weights);
-        mWeightRecyclerView.setAdapter(mAdapter);
+        if(mAdapter == null){
+            mAdapter = new WeightAdapter(weights);
+            mWeightRecyclerView.setAdapter(mAdapter);
+        }else{
+            mAdapter.setWeights(weights);
+            mAdapter.notifyDataSetChanged();
+        }
+
     }
     private class WeightHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mWeightTextView, mDateTextView,tv_diff;
@@ -56,10 +64,14 @@ public class HistoryActivityFragment extends Fragment {
 
         public void bindWeight(Weight weight){
             mWeight = weight;
+            float weight_f = Float.parseFloat(mWeight.getWeight());
+            if(weight_f > Float.parseFloat(User.getUser().getStart_weight())){
+                mWeightTextView.setTextColor(getResources().getColor(R.color.red));
+            }
             mWeightTextView.setText(mWeight.getWeight());
             String date = formatter.format(mWeight.getDate());
             mDateTextView.setText(date);
-            tv_diff.setText("diff");
+            tv_diff.setText("");
         }
 
         @Override
@@ -90,6 +102,10 @@ public class HistoryActivityFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mWeights.size();
+        }
+
+        public void setWeights(List<Weight> weights){
+            mWeights = weights;
         }
     }
 }
