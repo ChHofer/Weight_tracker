@@ -70,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_et_height"
+                android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
@@ -87,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_et_start_weight"
+                android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
@@ -104,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_et_goal_weight"
+                android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
@@ -121,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings_et_goal_date"
+                android:editable="false"
                 android:textSize="18sp"/>
         </LinearLayout>
         <TextView
