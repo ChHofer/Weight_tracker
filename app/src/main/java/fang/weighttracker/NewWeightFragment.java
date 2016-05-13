@@ -2,6 +2,10 @@ package fang.weighttracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -13,9 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,11 +39,15 @@ public class NewWeightFragment extends Fragment {
     private static final String ARG_WEIGHT_ID = "weight_id";
     private static final String DIALOG_DATE = "DialogDate";
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_PHOTO = 2;
+
     private SimpleDateFormat formatter = new SimpleDateFormat("E yyyy-MM-dd");
     private Weight mWeight;
+    private File mPhotoFile;
     private EditText et_New_Weight, et_New_Date;
-    private ImageView img_delete;
+    private ImageView img_delete, mPhotoView;
     private Button btn_save;
+    private ImageButton mPhotoButton;
 
     private static UserLocalStore userLocalstore;
 
@@ -59,6 +69,7 @@ public class NewWeightFragment extends Fragment {
         UUID weightId = (UUID) getArguments().getSerializable(ARG_WEIGHT_ID);
         mWeight = WeightLab.get(getActivity()).getWeight(weightId);
         userLocalstore = new UserLocalStore(getContext());
+        mPhotoFile = WeightLab.get(getActivity()).getPhotoFile(mWeight);
     }
 
     @Override
@@ -123,6 +134,27 @@ public class NewWeightFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        PackageManager packageManager = getActivity().getPackageManager();
+
+        mPhotoButton = (ImageButton) v.findViewById(R.id.weight_camera);
+        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        boolean canTakePhoto = mPhotoFile != null &&
+                captureImage.resolveActivity(packageManager) != null;
+        mPhotoButton.setEnabled(canTakePhoto);
+        if(canTakePhoto){
+            Uri uri = Uri.fromFile(mPhotoFile);
+            captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(captureImage, REQUEST_PHOTO);
+            }
+        });
+        mPhotoView = (ImageView) v.findViewById(R.id.weight_photo);
+        updatePhotoView();
         return v;
     }
 
@@ -136,6 +168,19 @@ public class NewWeightFragment extends Fragment {
             mWeight.setDate(date);
             String new_date = formatter.format(mWeight.getDate());
             et_New_Date.setText(new_date);
+        }else if(requestCode == REQUEST_PHOTO){
+            updatePhotoView();
+        }
+    }
+
+    private void updatePhotoView(){
+        if(mPhotoFile == null || !mPhotoFile.exists()){
+            mPhotoView.setImageDrawable(null);
+        }else {
+            Bitmap bitmap = PictureUtils.getScaleBitmap(
+                    mPhotoFile.getPath(),getActivity()
+            );
+            mPhotoView.setImageBitmap(bitmap);
         }
     }
 }
