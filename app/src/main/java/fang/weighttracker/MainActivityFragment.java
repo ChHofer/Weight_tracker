@@ -124,11 +124,13 @@ public class MainActivityFragment extends Fragment {
         tv_start_weight.setText(user.getStart_weight());
         tv_current_weight.setText(user.getCurrent_weight());
         tv_goal_weight.setText(user.getGoal_weight());
-        tv_bmi.setText(bmi);
+
         if( d_bmi >= 18.5 && d_bmi < 25.0 ){
             img_bmi.setImageResource(R.drawable.ok);
+            tv_bmi.setText(bmi + " Keep up...");
         }else{
             img_bmi.setImageResource(R.drawable.not_ok);
+            tv_bmi.setText(bmi + " You know...");
         }
         tv_weight_loss_to_date.setText("Weight Loss To Date : " + weight_to_date);
         return v;

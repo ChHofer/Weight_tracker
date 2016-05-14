@@ -118,64 +118,78 @@ public class Settings extends AppCompatActivity {
                 int selected_gender = rg_gender.getCheckedRadioButtonId();
                 int selected_unit = rg_unit.getCheckedRadioButtonId();
                 int selected_language = rg_language.getCheckedRadioButtonId();
-
                 String height = et_height.getText().toString();
-                float f_height = Float.parseFloat(height);
-
                 String start_weight = et_start_weight.getText().toString();
-                float f_start_weight = Float.parseFloat(start_weight);
-
                 String goal_weight = et_goal_weight.getText().toString();
-                float f_goal_weight = Float.parseFloat(goal_weight);
+                String current_weight = user.getCurrent_weight();
 
-                if(f_height < 2.0 || f_height > 10.0){
+                if (height.isEmpty()) {
                     et_height.setError("Please enter Height between 2 - 10 ft");
                     View focusView = et_height;
                     focusView.requestFocus();
-                } else if(f_start_weight < 50 || f_start_weight > 500){
-                    et_start_weight.setError("Please enter Weight between 50 - 500 lbs");
+
+                }else if(start_weight.isEmpty()){
+                    et_start_weight.setError("Please enter weight between 50 - 500 lbs ft");
                     View focusView = et_start_weight;
                     focusView.requestFocus();
-                }else if(f_goal_weight < 50 || f_goal_weight > 500){
-                    et_goal_weight.setError("Please enter Weight between 50 - 500 lbs");
+                }else if(goal_weight.isEmpty()){
+                    et_goal_weight.setError("Please enter weight between 50 - 500 lbs ft");
                     View focusView = et_goal_weight;
                     focusView.requestFocus();
-                }else{
-                    DecimalFormat df1 = new DecimalFormat("###,###.0");
-                    height = df1.format(f_height);
-
-                    DecimalFormat df2 = new DecimalFormat("###,###.0");
-                    start_weight = df2.format(f_start_weight);
+                }else {
 
 
-                    String current_weight = user.getCurrent_weight();
-                    if(Float.parseFloat(current_weight) == 0.0){
-                        current_weight = start_weight;
+                    float f_height = Float.parseFloat(height);
+                    float f_start_weight = Float.parseFloat(start_weight);
+                    float f_goal_weight = Float.parseFloat(goal_weight);
 
+                    if (f_height < 2.0 || f_height > 10.0) {
+                        et_height.setError("Please enter Height between 2 - 10 ft");
+                        View focusView2 = et_height;
+                        focusView2.requestFocus();
+                    } else if (f_start_weight < 50 || f_start_weight > 500) {
+                        et_start_weight.setError("Please enter Weight between 50 - 500 lbs");
+                        View focusView2 = et_start_weight;
+                        focusView2.requestFocus();
+                    } else if (f_goal_weight < 50 || f_goal_weight > 500) {
+                        et_goal_weight.setError("Please enter Weight between 50 - 500 lbs");
+                        View focusView2 = et_goal_weight;
+                        focusView2.requestFocus();
+                    } else {
+                        DecimalFormat df1 = new DecimalFormat("###,###.0");
+                        height = df1.format(f_height);
+
+                        DecimalFormat df2 = new DecimalFormat("###,###.0");
+                        start_weight = df2.format(f_start_weight);
+
+
+                        if (Float.parseFloat(current_weight) == 0.0) {
+                            current_weight = start_weight;
+
+                        }
+
+                        DecimalFormat df3 = new DecimalFormat("###,###.0");
+                        goal_weight = df3.format(f_goal_weight);
+
+                        String goal_date = et_goal_date.getText().toString();
+
+                        user = user.updateUser(selected_gender, selected_unit, selected_language, height, start_weight,
+                                current_weight, goal_weight, goal_date);
+
+                        userLocalstore.storeSettings(user);
+                        userLocalstore.setUserSetAlready(true);
+
+                        Weight weight = new Weight();
+                        weight.setDate(new Date());
+                        weight.setWeight(current_weight);
+
+                        WeightLab.get(getApplication()).addWeight(weight);
+
+                        Intent intent = new Intent(Settings.this, MainActivity.class);
+                        startActivity(intent);
                     }
 
-                    DecimalFormat df3 = new DecimalFormat("###,###.0");
-                    goal_weight = df3.format(f_goal_weight);
-
-                    String goal_date = et_goal_date.getText().toString();
-
-                    user = user.updateUser(selected_gender,selected_unit,selected_language,height, start_weight,
-                            current_weight, goal_weight,goal_date);
-
-                    userLocalstore.storeSettings(user);
-                    userLocalstore.setUserSetAlready(true);
-
-                    Weight weight = new Weight();
-                    weight.setDate(new Date());
-                    weight.setWeight(current_weight);
-
-                    WeightLab.get(getApplication()).addWeight(weight);
-
-                    Intent intent = new Intent(Settings.this, MainActivity.class);
-                    startActivity(intent);
                 }
-
-
             }
         });
 

@@ -14,4 +14,5 @@ public class WeightDbSchema {
             public static final String DIFF = "diff";
         }
     }
+
 }

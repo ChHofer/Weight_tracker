@@ -175,7 +175,7 @@ public class NewWeightFragment extends Fragment {
 
     private void updatePhotoView(){
         if(mPhotoFile == null || !mPhotoFile.exists()){
-            mPhotoView.setImageDrawable(null);
+            mPhotoView.setImageDrawable(getResources().getDrawable(R.drawable.default_photo));
         }else {
             Bitmap bitmap = PictureUtils.getScaleBitmap(
                     mPhotoFile.getPath(),getActivity()

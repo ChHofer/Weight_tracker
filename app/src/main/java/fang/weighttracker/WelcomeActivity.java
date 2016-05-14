@@ -21,7 +21,9 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         userLocalstore = new UserLocalStore(getApplication());
-        //Goes to Setting Activity if not set
+
+        //Goes to Setting Activity if not set, else go main activity
+
         if (userLocalstore.isSet() == false) {
 
             Intent intent = new Intent(getApplicationContext(), Settings.class);
