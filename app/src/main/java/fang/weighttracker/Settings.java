@@ -25,7 +25,7 @@ public class Settings extends AppCompatActivity {
     private RadioButton rb_gender, rb_unit, rb_language;
     private EditText et_height,et_start_weight,et_goal_weight,et_goal_date;
     private Button btn_save;
-    private TextView tv_cancel;
+    private TextView tv_cancel, tv_target_date;
     private static User user = User.getUser();
     private UserLocalStore userLocalstore;
 
@@ -45,6 +45,9 @@ public class Settings extends AppCompatActivity {
         et_start_weight = (EditText) findViewById(R.id.settings_et_start_weight);
         et_goal_weight = (EditText) findViewById(R.id.settings_et_goal_weight);
         et_goal_date = (EditText) findViewById(R.id.settings_et_goal_date);
+        et_goal_date.setVisibility(View.INVISIBLE);
+        tv_target_date =(TextView) findViewById(R.id.tv_target_date);
+        tv_target_date.setVisibility(View.INVISIBLE);
 
         tv_cancel = (TextView) findViewById(R.id.settings_cancel);
 
@@ -107,10 +110,6 @@ public class Settings extends AppCompatActivity {
 
         et_goal_date.setText(user.getGoal_date());
 
-
-
-
-
         btn_save = (Button) findViewById(R.id.setting_btn_save);
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,8 +162,13 @@ public class Settings extends AppCompatActivity {
                         start_weight = df2.format(f_start_weight);
 
 
-                        if (Float.parseFloat(current_weight) == 0.0) {
+                        if(userLocalstore.isSet() == false){
                             current_weight = start_weight;
+                            Weight weight = new Weight();
+                            weight.setDate(new Date());
+                            weight.setWeight(current_weight);
+
+                            WeightLab.get(getApplication()).addWeight(weight);
 
                         }
 
@@ -177,14 +181,9 @@ public class Settings extends AppCompatActivity {
                                 current_weight, goal_weight, goal_date);
 
                         userLocalstore.storeSettings(user);
+
+
                         userLocalstore.setUserSetAlready(true);
-
-                        Weight weight = new Weight();
-                        weight.setDate(new Date());
-                        weight.setWeight(current_weight);
-
-                        WeightLab.get(getApplication()).addWeight(weight);
-
                         Intent intent = new Intent(Settings.this, MainActivity.class);
                         startActivity(intent);
                     }

@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -27,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import fang.weighttracker.model.User;
 import fang.weighttracker.model.UserLocalStore;
 import fang.weighttracker.model.Weight;
 import fang.weighttracker.model.WeightDbSchema;
@@ -38,16 +40,19 @@ import fang.weighttracker.model.WeightLab;
 public class NewWeightFragment extends Fragment {
     private static final String ARG_WEIGHT_ID = "weight_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_NUMBER = "DialogNumber";
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_NUMBER= 1;
     private static final int REQUEST_PHOTO = 2;
 
     private SimpleDateFormat formatter = new SimpleDateFormat("E yyyy-MM-dd");
     private Weight mWeight;
     private File mPhotoFile;
-    private EditText et_New_Weight, et_New_Date;
+    private TextView et_New_Weight, et_New_Date;
     private ImageView img_delete, mPhotoView;
     private Button btn_save;
     private ImageButton mPhotoButton;
+    private Date date_update;
 
     private static UserLocalStore userLocalstore;
 
@@ -68,6 +73,7 @@ public class NewWeightFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID weightId = (UUID) getArguments().getSerializable(ARG_WEIGHT_ID);
         mWeight = WeightLab.get(getActivity()).getWeight(weightId);
+        date_update = mWeight.getDate();
         userLocalstore = new UserLocalStore(getContext());
         mPhotoFile = WeightLab.get(getActivity()).getPhotoFile(mWeight);
     }
@@ -86,15 +92,25 @@ public class NewWeightFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_new_weight, container,false);
 
-        et_New_Weight = (EditText) v.findViewById(R.id.et_new_weight_value);
-        et_New_Date = (EditText) v.findViewById(R.id.et_new_date_value);
+        et_New_Weight = (TextView) v.findViewById(R.id.et_new_weight_value);
+        et_New_Weight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager manager = getFragmentManager();
+                NumberPickerFragment dialog_number = NumberPickerFragment
+                        .newInstance(Float.parseFloat(mWeight.getWeight()));
+                dialog_number.setTargetFragment(NewWeightFragment.this, REQUEST_NUMBER);
+                dialog_number.show(manager, DIALOG_NUMBER);
+            }
+        });
+        et_New_Date = (TextView) v.findViewById(R.id.et_new_date_value);
         btn_save = (Button) v.findViewById(R.id.new_weight_btn_save);
         img_delete = (ImageView) v.findViewById(R.id.img_delete_weight);
 
         et_New_Weight.setText(mWeight.getWeight());
         String date = formatter.format(mWeight.getDate());
         et_New_Date.setText(date);
-        userLocalstore.storeCurrentWeight(mWeight);
+
 
         et_New_Date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +136,10 @@ public class NewWeightFragment extends Fragment {
 
                     DecimalFormat df = new DecimalFormat("######.0");
                     mWeight.setWeight(df.format(new_weight));
-                    userLocalstore.storeCurrentWeight(mWeight);
+                    mWeight.setDate(date_update);
+                    if(!mWeight.getDate().before(new Date())){
+                        userLocalstore.storeCurrentWeight(mWeight);
+                    }
                     Intent intent = new Intent(getActivity(), History.class);
                     startActivity(intent);
                 }
@@ -164,12 +183,14 @@ public class NewWeightFragment extends Fragment {
             return;
         }
         if(requestCode == REQUEST_DATE){
-            Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mWeight.setDate(date);
-            String new_date = formatter.format(mWeight.getDate());
+            date_update = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            String new_date = formatter.format(date_update);
             et_New_Date.setText(new_date);
         }else if(requestCode == REQUEST_PHOTO){
             updatePhotoView();
+        }else if(requestCode == REQUEST_NUMBER){
+            float number = (float) data.getSerializableExtra(NumberPickerFragment.EXTRA_NUMBER);
+            et_New_Weight.setText(Float.toString(number));
         }
     }
 

@@ -8,7 +8,7 @@ android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E1F5FE"
+    android:background="#FAFAFA"
     android:orientation="vertical">
 
     <LinearLayout
@@ -43,9 +43,8 @@ android:layout_height="match_parent">
                     android:layout_margin="0.5dp"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:textColor="#616161"
@@ -58,6 +57,14 @@ android:layout_height="match_parent">
                         android:textSize="30sp"
                         android:textColor="#616161"
                         android:text="200.0"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:text=" lbs"/>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,9 +73,8 @@ android:layout_height="match_parent">
                     android:layout_margin="0.5dp"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:textColor="#616161"
@@ -81,6 +87,13 @@ android:layout_height="match_parent">
                         android:textSize="30sp"
                         android:textColor="@android:color/holo_red_light"
                         android:text="170.0"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:text=" lbs"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -90,9 +103,8 @@ android:layout_height="match_parent">
                     android:orientation="horizontal"
                     >
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:textColor="#616161"
@@ -105,12 +117,14 @@ android:layout_height="match_parent">
                         android:textSize="30sp"
                         android:textColor="@android:color/holo_green_light"
                         android:text="160.0"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:text=" lbs"/>
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Unit:LB/FT"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -159,6 +173,14 @@ android:layout_height="match_parent">
                 android:text="21.8"/>
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bmi_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#2196F3"
+            android:textSize="25sp"
+            android:text="21.8"/>
 
         <TextView
             android:layout_width="match_parent"

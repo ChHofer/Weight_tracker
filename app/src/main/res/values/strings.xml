@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weight Tracker</string>
+    <string name="app_name">Weight tracker</string>
     <string name="action_settings">Settings</string>
     <string name="label_new">New Weight</string>
     <string name="label_history">History</string>
@@ -42,7 +42,8 @@
     <string name="input_new_weight_hint">Weight</string>
     <string name="input_new_date_hint">Date</string>
     <string name="date_picker_title">Date of Weight:</string>
-    <string name="btn_save">Save</string>
+    <string name="number_picker_title">Weight Picker:</string>
+    <string name="btn_save">Save Weight</string>
 
     <!-- Strings on Settings screen-->
     <string name="settings_label_profile">PROFILE</string>

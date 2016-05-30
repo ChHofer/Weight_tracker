@@ -29,6 +29,7 @@ public class MainActivityFragment extends Fragment {
             tv_current_weight,
             tv_goal_weight,
             tv_bmi,
+            tv_bmi_desc,
             tv_weight_loss_to_date,
             tv_weekly_loss_average;
     private ImageView img_welcome;
@@ -84,6 +85,7 @@ public class MainActivityFragment extends Fragment {
         tv_current_weight = (TextView) v.findViewById(R.id.summary_tv_current_weight);
         tv_goal_weight = (TextView) v.findViewById(R.id.summary_tv_goal_weight);
         tv_bmi = (TextView) v.findViewById(R.id.summary_tv_bmi);
+        tv_bmi_desc = (TextView)v.findViewById(R.id.tv_bmi_desc);
         img_bmi = (ImageView) v.findViewById(R.id.img_bmi);
         tv_weight_loss_to_date =(TextView) v.findViewById(R.id.tv_summary_weight_loss_to_date);
         tv_weekly_loss_average = (TextView) v.findViewById(R.id.tv_summary_weekly_weekly_loss);
@@ -124,13 +126,23 @@ public class MainActivityFragment extends Fragment {
         tv_start_weight.setText(user.getStart_weight());
         tv_current_weight.setText(user.getCurrent_weight());
         tv_goal_weight.setText(user.getGoal_weight());
-
+        tv_bmi.setText(bmi);
         if( d_bmi >= 18.5 && d_bmi < 25.0 ){
             img_bmi.setImageResource(R.drawable.ok);
-            tv_bmi.setText(bmi + " Keep up...");
-        }else{
+            tv_bmi_desc.setText("Normal");
+            tv_bmi_desc.setTextColor(getResources().getColor(R.color.green));
+        }else if(d_bmi < 18.5){
             img_bmi.setImageResource(R.drawable.not_ok);
-            tv_bmi.setText(bmi + " You know...");
+            tv_bmi_desc.setText("Underweight");
+            tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
+        }else if(d_bmi >= 25.0 && d_bmi < 30.0){
+            img_bmi.setImageResource(R.drawable.not_ok);
+            tv_bmi_desc.setText("Overweight");
+            tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
+        }else if(d_bmi >= 30.0){
+            img_bmi.setImageResource(R.drawable.not_ok);
+            tv_bmi_desc.setText("Obesity");
+            tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
         }
         tv_weight_loss_to_date.setText("Weight Loss To Date : " + weight_to_date);
         return v;

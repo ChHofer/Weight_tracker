@@ -116,6 +116,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="5dp">
             <TextView
+                android:id="@+id/tv_target_date"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_target_date"
@@ -159,13 +160,6 @@
                     android:checked="true"
                     android:text="@string/settings_unit_lb"
                     android:textSize="18sp"/>
-                <RadioButton
-                    android:id="@+id/settings_radio_btn_kg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_unit_kg"
-                    android:textSize="18sp"/>
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
@@ -190,13 +184,6 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="@string/settings_lang_en"
-                    android:textSize="18sp"/>
-                <RadioButton
-                    android:id="@+id/settings_radio_btn_language_ch"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_lang_ch"
                     android:textSize="18sp"/>
             </RadioGroup>
         </LinearLayout>

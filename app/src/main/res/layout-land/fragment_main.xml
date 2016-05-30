@@ -159,6 +159,14 @@
                     android:text="21.8"/>
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/tv_bmi_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#2196F3"
+                android:textSize="25sp"
+                android:text="21.8"/>
 
             <TextView
                 android:layout_width="match_parent"
