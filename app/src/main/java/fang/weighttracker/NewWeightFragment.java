@@ -12,13 +12,16 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,8 +52,8 @@ public class NewWeightFragment extends Fragment {
     private Weight mWeight;
     private File mPhotoFile;
     private TextView et_New_Weight, et_New_Date;
-    private ImageView img_delete, mPhotoView;
-    private Button btn_save;
+    private ImageView mPhotoView;
+    private Button btn_save,btn_delete;
     private ImageButton mPhotoButton;
     private Date date_update;
 
@@ -105,7 +108,7 @@ public class NewWeightFragment extends Fragment {
         });
         et_New_Date = (TextView) v.findViewById(R.id.et_new_date_value);
         btn_save = (Button) v.findViewById(R.id.new_weight_btn_save);
-        img_delete = (ImageView) v.findViewById(R.id.img_delete_weight);
+        btn_delete = (Button) v.findViewById(R.id.btn_delete_weight);
 
         et_New_Weight.setText(mWeight.getWeight());
         String date = formatter.format(mWeight.getDate());
@@ -132,12 +135,12 @@ public class NewWeightFragment extends Fragment {
                     et_New_Weight.setError("Please enter between 50 - 500 lbs");
                     focusView = et_New_Weight;
                     focusView.requestFocus();
-                }else {
+                }else{
 
                     DecimalFormat df = new DecimalFormat("######.0");
                     mWeight.setWeight(df.format(new_weight));
                     mWeight.setDate(date_update);
-                    if(!mWeight.getDate().before(new Date())){
+                    if(!mWeight.getDate().before(new Date()) || DateUtils.isToday(mWeight.getDate().getTime())){
                         userLocalstore.storeCurrentWeight(mWeight);
                     }
                     Intent intent = new Intent(getActivity(), History.class);
@@ -145,7 +148,7 @@ public class NewWeightFragment extends Fragment {
                 }
             }
         });
-        img_delete.setOnClickListener(new View.OnClickListener() {
+        btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 WeightLab.get(getContext()).deleteWeight(mWeight);

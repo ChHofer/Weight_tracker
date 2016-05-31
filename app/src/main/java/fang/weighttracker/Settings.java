@@ -23,9 +23,9 @@ public class Settings extends AppCompatActivity {
 
     private RadioGroup rg_gender, rg_unit,rg_language;
     private RadioButton rb_gender, rb_unit, rb_language;
-    private EditText et_height,et_start_weight,et_goal_weight,et_goal_date;
+    private EditText et_height,et_start_weight,et_goal_weight;
     private Button btn_save;
-    private TextView tv_cancel, tv_target_date;
+    private TextView tv_cancel;
     private static User user = User.getUser();
     private UserLocalStore userLocalstore;
 
@@ -44,10 +44,6 @@ public class Settings extends AppCompatActivity {
         et_height = (EditText) findViewById(R.id.settings_et_height);
         et_start_weight = (EditText) findViewById(R.id.settings_et_start_weight);
         et_goal_weight = (EditText) findViewById(R.id.settings_et_goal_weight);
-        et_goal_date = (EditText) findViewById(R.id.settings_et_goal_date);
-        et_goal_date.setVisibility(View.INVISIBLE);
-        tv_target_date =(TextView) findViewById(R.id.tv_target_date);
-        tv_target_date.setVisibility(View.INVISIBLE);
 
         tv_cancel = (TextView) findViewById(R.id.settings_cancel);
 
@@ -107,8 +103,6 @@ public class Settings extends AppCompatActivity {
                 return false;
             }
         });
-
-        et_goal_date.setText(user.getGoal_date());
 
         btn_save = (Button) findViewById(R.id.setting_btn_save);
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -175,10 +169,9 @@ public class Settings extends AppCompatActivity {
                         DecimalFormat df3 = new DecimalFormat("###,###.0");
                         goal_weight = df3.format(f_goal_weight);
 
-                        String goal_date = et_goal_date.getText().toString();
 
                         user = user.updateUser(selected_gender, selected_unit, selected_language, height, start_weight,
-                                current_weight, goal_weight, goal_date);
+                                current_weight, goal_weight, new Date().toString());
 
                         userLocalstore.storeSettings(user);
 

@@ -109,25 +109,7 @@
                 android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/tv_target_date"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_target_date"
-                android:textSize="18sp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/settings_et_goal_date"
-                android:editable="false"
-                android:textSize="18sp"/>
-        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

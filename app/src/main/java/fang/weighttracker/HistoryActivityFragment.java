@@ -52,7 +52,7 @@ public class HistoryActivityFragment extends Fragment {
     private class WeightHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mWeightTextView, mDateTextView,tv_diff;
         private Weight mWeight;
-        private SimpleDateFormat formatter = new SimpleDateFormat("EEEE yyyy-MM-dd");
+        private SimpleDateFormat formatter = new SimpleDateFormat("EEE yyyy-MM-dd");
 
         public WeightHolder(View itemView){
             super(itemView);

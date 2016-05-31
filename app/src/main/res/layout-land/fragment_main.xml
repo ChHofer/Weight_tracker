@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E1F5FE"
+        android:background="#FAFAFA"
         android:orientation="vertical">
 
         <LinearLayout
@@ -43,9 +43,8 @@
                         android:layout_margin="0.5dp"
                         android:orientation="horizontal">
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="50dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
                             android:textColor="#616161"
@@ -58,6 +57,14 @@
                             android:textSize="30sp"
                             android:textColor="#616161"
                             android:text="200.0"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:text=" lbs"/>
+
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -66,9 +73,8 @@
                         android:layout_margin="0.5dp"
                         android:orientation="horizontal">
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="50dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
                             android:textColor="#616161"
@@ -81,6 +87,13 @@
                             android:textSize="30sp"
                             android:textColor="@android:color/holo_red_light"
                             android:text="170.0"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:text=" lbs"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -90,9 +103,8 @@
                         android:orientation="horizontal"
                         >
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="50dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
                             android:textColor="#616161"
@@ -105,25 +117,37 @@
                             android:textSize="30sp"
                             android:textColor="@android:color/holo_green_light"
                             android:text="160.0"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:text=" lbs"/>
                     </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:text="Unit:LB/FT"/>
 
                 </LinearLayout>
             </LinearLayout>
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
                 android:layout_gravity="center"
-                android:textSize="25sp"
-                android:text="@string/tv_bmi_label"
-                android:textColor="@android:color/holo_blue_light"/>
-
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:textSize="25sp"
+                    android:text="@string/tv_bmi_label"
+                    android:textColor="@android:color/holo_blue_light"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_menu_info_details"/>
+            </LinearLayout>
             <com.natasa.progressviews.ArcProgressBar
                 android:layout_gravity="center"
                 android:id="@+id/arc_progressbar"
@@ -190,17 +214,21 @@
                 android:layout_margin="0.5dp"
                 android:textColor="@android:color/white"
                 android:text="@string/label_weight_loss_to_date"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_menu_info_details"/>
             <TextView
                 android:id="@+id/tv_summary_weekly_weekly_loss"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="left"
                 android:layout_gravity="center_vertical"
-                android:textSize="20sp"
-                android:layout_margin="0.5dp"
-                android:background="#4FC3F7"
-                android:textColor="@android:color/white"
-                android:text="@string/label_weekly_weight_loss_average"/>
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:text="&quot;Body Mass Index (BMI) is a person's weight in kilograms divided by the square of height in meters. A high BMI can be an indicator of high body fatness.BMI can be used to screen for weight categories that may lead to health problems but it is not diagnostic of the body fatness or health of an individual&quot;(CDC,2015).\nCenters for Disease Control and Prevention. (2015, May 15). Body Mass Index (BMI). Retrieved May 31, 2016, from https://www.cdc.gov/healthyweight/assessing/bmi/
+"/>
 
         </LinearLayout>
     </LinearLayout>
