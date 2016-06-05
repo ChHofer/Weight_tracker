@@ -58,10 +58,10 @@ public class Settings extends AppCompatActivity {
             int selected_gender = rg_gender.getCheckedRadioButtonId();
             int selected_unit = rg_unit.getCheckedRadioButtonId();
             int selected_language = rg_language.getCheckedRadioButtonId();
-            String height = "6.0";
-            String start_weight = "200.0";
-            String current_weight = "0.0";
-            String goal_weight =  "160.0";
+            String height = "";
+            String start_weight = "";
+            String current_weight = "";
+            String goal_weight =  "";
             String goal_date = new Date().toString();
 
             user = user.updateUser(selected_gender,selected_unit,selected_language,height, start_weight,

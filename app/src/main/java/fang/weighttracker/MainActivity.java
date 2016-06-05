@@ -65,20 +65,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.overview:
-                        Toast.makeText(getApplicationContext(),"Summary Selected",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(),"Summary Selected",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         return true;
 
                     case R.id.history:
-                        Toast.makeText(getApplicationContext(),"History Selected",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"History Selected",Toast.LENGTH_SHORT).show();
                         Intent history_intent = new Intent(getApplicationContext(), History.class);
                         startActivity(history_intent);
 
 
                         return true;
                     case R.id.setting:
-                        Toast.makeText(getApplicationContext(),"Setting Selected",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"Setting Selected",Toast.LENGTH_SHORT).show();
                         Intent setting_intent = new Intent(getApplicationContext(), Settings.class);
                         startActivity(setting_intent);
                         return true;
