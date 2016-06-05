@@ -21,10 +21,12 @@ public class WeightCursorWrapper extends CursorWrapper {
         String weight = getString(getColumnIndex(WeightTable.Columns.WEIGHT));
         long date =getLong(getColumnIndex(WeightTable.Columns.DATE));
         String diff = getString(getColumnIndex(WeightTable.Columns.DIFF));
+        String flag_saved = getString(getColumnIndex(WeightTable.Columns.FLAG_SAVED));
 
         Weight w = new Weight(UUID.fromString(uuidString));
         w.setWeight(weight);
         w.setDate(new Date(date));
+        w.setFlag_saved(flag_saved);
 
         return w;
     }

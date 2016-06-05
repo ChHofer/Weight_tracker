@@ -43,6 +43,12 @@ public class WeightLab {
         mDatabase.delete(WeightTable.NAME,
                 WeightTable.Columns.UUID + " = ?",new String[]{w.getId().toString()});
     }
+
+    public void delete_temp_Weight(){
+        mDatabase.delete(WeightTable.NAME,
+                WeightTable.Columns.FLAG_SAVED + " = ?",new String[]{"false"});
+    }
+
     public List<Weight> getWeights(){
         List<Weight> weights = new ArrayList<>();
         WeightCursorWrapper cursor = queryWeights(null,null);
@@ -91,8 +97,6 @@ public class WeightLab {
         mDatabase.update(WeightTable.NAME, values,
                 WeightTable.Columns.UUID +" = ?",
                 new String[]{uuidString});
-
-
     }
 
     private static ContentValues getContentValues(Weight weight){
@@ -101,6 +105,7 @@ public class WeightLab {
         values.put(WeightTable.Columns.WEIGHT, weight.getWeight());
         values.put(WeightTable.Columns.DATE, weight.getDate().getTime());
         values.put(WeightTable.Columns.DIFF, "");
+        values.put(WeightTable.Columns.FLAG_SAVED, weight.isFlag_saved());
 
         return values;
 

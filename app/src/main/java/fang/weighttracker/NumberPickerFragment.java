@@ -14,6 +14,8 @@ import android.widget.NumberPicker;
 
 import java.util.Date;
 
+import fang.weighttracker.model.User;
+
 /**
  * Created by Fang2 on 2016/5/13.
  */
@@ -43,11 +45,16 @@ public class NumberPickerFragment extends DialogFragment {
         mNumberPicker = (NumberPicker)v.findViewById(R.id.number_picker);
         mNumberPicker.setMaxValue(500);
         mNumberPicker.setMinValue(50);
-        mNumberPicker.setValue(120);
+        //get current weight integer part and set it to mNumberPicker
+        Float f_current_weight = Float.parseFloat(User.getUser().getCurrent_weight());
+        mNumberPicker.setValue((int)(f_current_weight-(f_current_weight%1)));
+
         mDecimalPicker = (NumberPicker) v.findViewById(R.id.decimal_picker);
         mDecimalPicker.setMaxValue(9);
         mDecimalPicker.setMinValue(0);
-        mNumberPicker.setValue(120);
+
+        //get current weight float part and set it to mDecimalPicker
+        mDecimalPicker.setValue((int)(f_current_weight%1*10));
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(R.string.number_picker_title)

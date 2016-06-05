@@ -1,6 +1,7 @@
 package fang.weighttracker;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -84,9 +85,9 @@ public class NewWeightFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-
         WeightLab.get(getActivity())
-                .updateWeight(mWeight);
+                    .updateWeight(mWeight);
+
     }
 
     @Override
@@ -94,6 +95,7 @@ public class NewWeightFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_new_weight, container,false);
+
 
         et_New_Weight = (TextView) v.findViewById(R.id.et_new_weight_value);
         et_New_Weight.setOnClickListener(new View.OnClickListener() {
@@ -140,10 +142,11 @@ public class NewWeightFragment extends Fragment {
                     DecimalFormat df = new DecimalFormat("######.0");
                     mWeight.setWeight(df.format(new_weight));
                     mWeight.setDate(date_update);
+                    mWeight.setFlag_saved("true");
                     if(!mWeight.getDate().before(new Date()) || DateUtils.isToday(mWeight.getDate().getTime())){
                         userLocalstore.storeCurrentWeight(mWeight);
                     }
-                    Intent intent = new Intent(getActivity(), History.class);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -152,7 +155,7 @@ public class NewWeightFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 WeightLab.get(getContext()).deleteWeight(mWeight);
-                Intent intent = new Intent(getActivity(), History.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -207,4 +210,6 @@ public class NewWeightFragment extends Fragment {
             mPhotoView.setImageBitmap(bitmap);
         }
     }
+
+
 }

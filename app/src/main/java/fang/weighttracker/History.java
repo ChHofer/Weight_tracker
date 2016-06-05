@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import fang.weighttracker.model.WeightLab;
+
 public class History extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class History extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Email weight tracker records to friends", Snackbar.LENGTH_LONG)
-                        .setAction("Action",null )
+                        .setAction("Action", null)
                         .show();
             }
         });

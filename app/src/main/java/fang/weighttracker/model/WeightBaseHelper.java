@@ -24,7 +24,8 @@ public class WeightBaseHelper extends SQLiteOpenHelper {
                      WeightTable.Columns.UUID + ", " +
                      WeightTable.Columns.WEIGHT + ", " +
                      WeightTable.Columns.DATE + "," +
-                     WeightTable.Columns.DIFF +
+                     WeightTable.Columns.DIFF +"," +
+                     WeightTable.Columns.FLAG_SAVED +
                 ")"
         );
 

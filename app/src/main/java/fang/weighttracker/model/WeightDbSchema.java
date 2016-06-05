@@ -12,6 +12,7 @@ public class WeightDbSchema {
             public static final String WEIGHT = "weight";
             public static final String DATE = "date";
             public static final String DIFF = "diff";
+            public static final String FLAG_SAVED = "flag_saved";
         }
     }
 

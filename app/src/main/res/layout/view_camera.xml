@@ -17,6 +17,7 @@
         android:layout_gravity="center"
         android:cropToPadding="true"
         android:id="@+id/weight_photo"
-        android:src="@drawable/default_photo"/>
+        android:src="@drawable/default_photo"
+        />
 
 </LinearLayout>

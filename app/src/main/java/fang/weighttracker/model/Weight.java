@@ -11,6 +11,7 @@ public class Weight {
     private String mWeight;
     private Date mDate;
     private User user = User.getUser();
+    private String flag_saved;
 
     public Weight(){
         this(UUID.randomUUID());
@@ -19,6 +20,15 @@ public class Weight {
         mId = id;
         mDate = new Date();
         mWeight = user.getCurrent_weight();
+        flag_saved = "false";
+    }
+
+    public String isFlag_saved() {
+        return flag_saved;
+    }
+
+    public void setFlag_saved(String flag_saved) {
+        this.flag_saved = flag_saved;
     }
 
     public UUID getId() {

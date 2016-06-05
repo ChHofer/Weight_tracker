@@ -19,6 +19,7 @@ import java.text.DecimalFormat;
 
 import fang.weighttracker.model.User;
 import fang.weighttracker.model.UserLocalStore;
+import fang.weighttracker.model.WeightLab;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -52,6 +53,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         userLocalstore = new UserLocalStore(getContext());
         user = userLocalstore.getSettings();
         float start_w = Float.parseFloat(user.getStart_weight());
@@ -72,14 +74,12 @@ public class MainActivityFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-
-
-
 
         tv_start_weight = (TextView) v.findViewById(R.id.summary_tv_start_weight);
         tv_current_weight = (TextView) v.findViewById(R.id.summary_tv_current_weight);

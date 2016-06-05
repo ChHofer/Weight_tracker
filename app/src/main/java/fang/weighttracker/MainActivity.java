@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //clear all temp weights.
+        WeightLab.get(getApplication()).delete_temp_Weight();
+
         // Initializing Toolbar and setting it as the actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.bn_new_weight:
                 Weight weight = new Weight();
-                WeightLab.get(this).addWeight(weight);
+               WeightLab.get(this).addWeight(weight);
                 Intent intent = WeightPager
                         .newIntent(this, weight.getId());
                 startActivity(intent);
