@@ -18,6 +18,12 @@ import java.util.List;
 import fang.weighttracker.model.Weight;
 import fang.weighttracker.model.WeightLab;
 
+/**
+ * @author Fang Fang
+ * Date: 2016/5/13
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     //Defining Variables

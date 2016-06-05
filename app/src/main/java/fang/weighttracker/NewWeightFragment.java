@@ -39,8 +39,11 @@ import fang.weighttracker.model.WeightDbSchema;
 import fang.weighttracker.model.WeightLab;
 
 /**
- * A placeholder fragment containing a simple view.
+ * @author Fang Fang
+ * Date: 2016/5/13
+ * A placeholder fragment containing a simple view for new weight.
  */
+
 public class NewWeightFragment extends Fragment {
     private static final String ARG_WEIGHT_ID = "weight_id";
     private static final String DIALOG_DATE = "DialogDate";

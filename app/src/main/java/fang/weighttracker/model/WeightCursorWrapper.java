@@ -9,7 +9,9 @@ import java.util.UUID;
 import fang.weighttracker.model.WeightDbSchema.WeightTable;
 
 /**
- * Created by Fang2 on 2016/5/1.
+ * @author Fang Fang
+ * Date: 2016/5/1
+ *
  */
 public class WeightCursorWrapper extends CursorWrapper {
     public WeightCursorWrapper(Cursor cursor){

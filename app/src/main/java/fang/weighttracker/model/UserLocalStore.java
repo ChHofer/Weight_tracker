@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Fang2 on 2016/4/26.
+ * @author Fang Fang
+ * Date: 2016/4/26
+ *
  */
 public class UserLocalStore{
     private static final String SETTINGS = "userSettings";

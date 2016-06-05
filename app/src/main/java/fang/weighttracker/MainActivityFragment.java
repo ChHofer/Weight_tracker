@@ -22,8 +22,11 @@ import fang.weighttracker.model.UserLocalStore;
 import fang.weighttracker.model.WeightLab;
 
 /**
- * A placeholder fragment containing a simple view.
+ * @author Fang Fang
+ * Date: 2016/5/13
+ * A placeholder fragment containing a simple view for Main Activity.
  */
+
 public class MainActivityFragment extends Fragment {
     private static TextView
             tv_start_weight,

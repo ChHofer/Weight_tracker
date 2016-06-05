@@ -19,7 +19,9 @@ import fang.weighttracker.model.Weight;
 import fang.weighttracker.model.WeightLab;
 
 /**
- * Created by Fang2 on 2016/4/23.
+ * @author Fang Fang
+ * Date: 2016/4/23
+ *
  */
 public class WeightPager extends AppCompatActivity{
     private static final String EXTRA_WEIGHT_ID =

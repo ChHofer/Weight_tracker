@@ -7,6 +7,11 @@ import android.widget.ImageView;
 
 import fang.weighttracker.model.UserLocalStore;
 
+/**
+ * @author Fang Fang
+ * Date: 2016/5/13
+ *
+ */
 public class WelcomeActivity extends AppCompatActivity {
     private static UserLocalStore userLocalstore;
 

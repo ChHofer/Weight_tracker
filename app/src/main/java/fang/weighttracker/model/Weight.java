@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * Created by Fang2 on 2016/4/22.
+ * @author Fang Fang
+ * Date: 2016/4/22
+ *
  */
 public class Weight {
     private UUID mId;

@@ -15,7 +15,9 @@ import java.util.UUID;
 import fang.weighttracker.model.WeightDbSchema.WeightTable;
 
 /**
- * Created by Fang2 on 2016/4/22.
+ * @author Fang Fang
+ * Date: 2016/4/22
+ *
  */
 public class WeightLab {
     private static WeightLab sWeightLab;

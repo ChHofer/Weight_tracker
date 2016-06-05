@@ -16,7 +16,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * Created by Fang2 on 2016/4/17.
+ * @author Fang Fang
+ * Date: 2016/4/17
+ *
  */
 public class DatePickerFragment extends DialogFragment {
     public static final String EXTRA_DATE =

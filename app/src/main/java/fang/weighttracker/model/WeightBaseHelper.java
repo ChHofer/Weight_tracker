@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import fang.weighttracker.model.WeightDbSchema.WeightTable;
 
 /**
- * Created by Fang2 on 2016/5/1.
+ * @author Fang Fang
+ * Date: 2016/5/1
+ *
  */
 public class WeightBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;

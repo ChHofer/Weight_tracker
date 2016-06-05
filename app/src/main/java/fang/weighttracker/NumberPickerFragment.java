@@ -17,7 +17,9 @@ import java.util.Date;
 import fang.weighttracker.model.User;
 
 /**
- * Created by Fang2 on 2016/5/13.
+ * @author Fang Fang
+ * Date: 2016/5/13
+ *
  */
 public class NumberPickerFragment extends DialogFragment {
     public static final String EXTRA_NUMBER =

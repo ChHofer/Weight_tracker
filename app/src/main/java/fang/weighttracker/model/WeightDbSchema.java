@@ -1,7 +1,9 @@
 package fang.weighttracker.model;
 
 /**
- * Created by Fang2 on 2016/5/1.
+ * @author Fang Fang
+ * Date: 2016/5/1
+ *
  */
 public class WeightDbSchema {
     public static final class WeightTable{

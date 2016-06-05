@@ -10,6 +10,12 @@ import android.view.View;
 
 import fang.weighttracker.model.WeightLab;
 
+/**
+ * @author Fang Fang
+ * Date: 2016/5/13
+ *
+ */
+
 public class History extends AppCompatActivity {
 
     @Override

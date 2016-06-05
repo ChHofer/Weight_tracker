@@ -19,6 +19,12 @@ import fang.weighttracker.model.UserLocalStore;
 import fang.weighttracker.model.Weight;
 import fang.weighttracker.model.WeightLab;
 
+/**
+ * @author Fang Fang
+ * Date: 2016/5/13
+ *
+ */
+
 public class Settings extends AppCompatActivity {
 
     private RadioGroup rg_gender, rg_unit,rg_language;

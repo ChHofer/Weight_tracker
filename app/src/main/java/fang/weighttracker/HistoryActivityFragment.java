@@ -16,10 +16,13 @@ import java.util.List;
 import fang.weighttracker.model.User;
 import fang.weighttracker.model.Weight;
 import fang.weighttracker.model.WeightLab;
-
 /**
- * A placeholder fragment containing a simple view.
+ * @author Fang Fang
+ * Date: 2016/4/22
+ * A placeholder fragment containing a simple view for History Activity.
+ *
  */
+
 public class HistoryActivityFragment extends Fragment {
     private RecyclerView mWeightRecyclerView;
     private WeightAdapter mAdapter;
