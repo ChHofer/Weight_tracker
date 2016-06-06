@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WEIGHT TRACKER</string>
+    <string name="app_name">Weight Tracker</string>
     <string name="action_settings">Settings</string>
     <string name="label_new">New Weight</string>
     <string name="label_history">History</string>
@@ -7,6 +7,9 @@
     <string name="title_activity_settings">Settings</string>
     <string name="title_weight_pager">Weight Pager</string>
 
+    <!-- Splash view string-->
+    <string name="welcome">Welcome</string>
+    <string name="splash_message">Track your weight, improve your health.</string>
     <!-- Navigation view string-->
     <string name="navigation_item_1">Home</string>
     <string name="navigation_item_2">Events</string>

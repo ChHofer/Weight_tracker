@@ -151,7 +151,7 @@ public class MainActivityFragment extends Fragment {
             tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
         }
 
-        if(weight_to_date == ".0"){
+        if(weight_to_date == ".0" ){
             tv_weight_loss_to_date.setVisibility(View.INVISIBLE);
         }else {
             tv_weight_loss_to_date.setVisibility(View.VISIBLE);
