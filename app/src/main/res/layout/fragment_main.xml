@@ -39,7 +39,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="#E1F5FE"
                         android:layout_margin="0.5dp"
                         android:orientation="horizontal">
                         <TextView
@@ -69,7 +68,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#E1F5FE"
                         android:layout_margin="0.5dp"
                         android:orientation="horizontal">
                         <TextView
@@ -98,7 +96,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#E1F5FE"
                         android:layout_margin="0.5dp"
                         android:orientation="horizontal"
                         >
@@ -128,6 +125,11 @@
 
                 </LinearLayout>
             </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="10dp"
+                android:background="@color/light_gray" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,12 +144,8 @@
                     android:textSize="25sp"
                     android:text="@string/tv_bmi_label"
                     android:textColor="@android:color/holo_blue_light"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@android:drawable/ic_menu_info_details"/>
             </LinearLayout>
+
             <com.natasa.progressviews.ArcProgressBar
                 android:layout_gravity="center"
                 android:id="@+id/arc_progressbar"
@@ -157,28 +155,21 @@
                 android:layout_alignRight="@+id/line_progressbar"
                 android:layout_alignTop="@+id/line_progressbar1"
                 android:visibility="visible"
-                app:bar_color="#00B0FF"
+                app:bar_color="@color/gray"
                 app:bar_width="25dp"
-                app:progress_color="#03A9F4"
+                app:progress_color="@android:color/holo_blue_light"
                 app:progress_width="25dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/img_bmi"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/ok"/>
                 <TextView
                     android:id="@+id/summary_tv_bmi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="#2196F3"
+                    android:textColor="@android:color/black"
                     android:textSize="50sp"
                     android:text="21.8"/>
 
@@ -188,14 +179,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#2196F3"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:textSize="25sp"
-                android:text="21.8"/>
+                android:text=""/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="@string/desc_bmi"/>
         </LinearLayout>
 
@@ -209,8 +202,10 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
-                android:background="#FFB74D"
+                android:background="@color/orange"
                 android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:layout_margin="0.5dp"
                 android:textColor="@android:color/white"
                 android:text="@string/label_weight_loss_to_date"/>
@@ -218,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@android:drawable/ic_menu_info_details"/>
+                android:src="@drawable/info"/>
             <TextView
                 android:id="@+id/tv_summary_weekly_weekly_loss"
                 android:layout_width="match_parent"

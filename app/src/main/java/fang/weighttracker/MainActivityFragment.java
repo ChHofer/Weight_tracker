@@ -40,7 +40,6 @@ public class MainActivityFragment extends Fragment {
     private CircleProgressBar mCircleProgressBar;
     private ArcProgressBar mArcProgressBar;
 
-    private static ImageView img_bmi;
     private static User user;
     private static UserLocalStore userLocalstore;
     private static double d_bmi;
@@ -89,7 +88,6 @@ public class MainActivityFragment extends Fragment {
         tv_goal_weight = (TextView) v.findViewById(R.id.summary_tv_goal_weight);
         tv_bmi = (TextView) v.findViewById(R.id.summary_tv_bmi);
         tv_bmi_desc = (TextView)v.findViewById(R.id.tv_bmi_desc);
-        img_bmi = (ImageView) v.findViewById(R.id.img_bmi);
         tv_weight_loss_to_date =(TextView) v.findViewById(R.id.tv_summary_weight_loss_to_date);
         tv_weekly_loss_average = (TextView) v.findViewById(R.id.tv_summary_weekly_weekly_loss);
 
@@ -100,6 +98,7 @@ public class MainActivityFragment extends Fragment {
         float progress = weight_to_date_f/weight_goal_diff;
         mCircleProgressBar.setProgress(progress*100);
         //mCircleProgressBar.setProgressIndeterminateAnimation(2000);
+
 
         if(weight_to_date_f < 0){
              mCircleProgressBar.setText(weight_to_date);
@@ -125,29 +124,39 @@ public class MainActivityFragment extends Fragment {
         });
 
         mArcProgressBar = (ArcProgressBar) v.findViewById(R.id.arc_progressbar);
+        mArcProgressBar.setRoundEdgeProgress(true);
+        float progress_bmi = (float)d_bmi*3;
+        mArcProgressBar.setProgress(progress_bmi);
+
 
         tv_start_weight.setText(user.getStart_weight());
         tv_current_weight.setText(user.getCurrent_weight());
         tv_goal_weight.setText(user.getGoal_weight());
         tv_bmi.setText(bmi);
         if( d_bmi >= 18.5 && d_bmi < 25.0 ){
-            img_bmi.setImageResource(R.drawable.ok);
-            tv_bmi_desc.setText("Normal");
+            tv_bmi_desc.setText("NORMAL");
+            tv_bmi.setTextColor(getResources().getColor(R.color.black));
             tv_bmi_desc.setTextColor(getResources().getColor(R.color.green));
         }else if(d_bmi < 18.5){
-            img_bmi.setImageResource(R.drawable.not_ok);
-            tv_bmi_desc.setText("Underweight");
+            tv_bmi_desc.setText("UNDERWEIGHT");
+            tv_bmi.setTextColor(getResources().getColor(R.color.red));
             tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
         }else if(d_bmi >= 25.0 && d_bmi < 30.0){
-            img_bmi.setImageResource(R.drawable.not_ok);
-            tv_bmi_desc.setText("Overweight");
+            tv_bmi_desc.setText("OVERWEIGHT");
+            tv_bmi.setTextColor(getResources().getColor(R.color.red));
             tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
         }else if(d_bmi >= 30.0){
-            img_bmi.setImageResource(R.drawable.not_ok);
-            tv_bmi_desc.setText("Obesity");
+            tv_bmi_desc.setText("OBESITY");
+            tv_bmi.setTextColor(getResources().getColor(R.color.red));
             tv_bmi_desc.setTextColor(getResources().getColor(R.color.red));
         }
-        tv_weight_loss_to_date.setText("Weight Loss To Date : " + weight_to_date);
+
+        if(weight_to_date == ".0"){
+            tv_weight_loss_to_date.setVisibility(View.INVISIBLE);
+        }else {
+            tv_weight_loss_to_date.setVisibility(View.VISIBLE);
+            tv_weight_loss_to_date.setText("Weight Loss To Date : " + weight_to_date);
+        }
         return v;
     }
 }

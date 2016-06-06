@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weight Tracker</string>
+    <string name="app_name">WEIGHT TRACKER</string>
     <string name="action_settings">Settings</string>
     <string name="label_new">New Weight</string>
     <string name="label_history">History</string>
@@ -56,9 +56,9 @@
     <string name="settings_lang_en">English</string>
     <string name="settings_lang_ch">Chinese</string>
     <string name="settings_label_settings">SETTINGS</string>
-    <string name="settings_height">Height:</string>
-    <string name="settings_start_weight">Start Weight:</string>
-    <string name="settings_goal_weight">Goal Weight</string>
+    <string name="settings_height">Height(ft):</string>
+    <string name="settings_start_weight">Start(lb):</string>
+    <string name="settings_goal_weight">Goal(lb):</string>
     <string name="settings_target_date">Target Date</string>
 
 </resources>

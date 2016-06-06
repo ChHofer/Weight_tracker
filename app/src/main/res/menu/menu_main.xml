@@ -6,12 +6,12 @@
         android:id="@+id/bn_new_weight"
         android:orderInCategory="100"
         android:title="@string/label_new"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/add"
         app:showAsAction="ifRoom|withText"/>
     <item
         android:id="@+id/bn_history"
         android:orderInCategory="100"
         android:title="@string/label_history"
-        android:icon="@android:drawable/ic_menu_recent_history"
+        android:icon="@drawable/history"
         app:showAsAction="ifRoom|withText"/>
 </menu>
