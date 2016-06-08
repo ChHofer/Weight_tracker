@@ -42,4 +42,7 @@ dependencies {
     //for RoundedImageView in weight entry screen
     compile 'com.makeramen:roundedimageview:2.2.1'
 
+    //MPAndroidChart Dependency
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+
 }

@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(setting_intent);
                         return true;
 
+                    case R.id.chart:
+                        Intent chart_intent = new Intent(getApplicationContext(), Chart.class);
+                        startActivity(chart_intent);
+                        return true;
+
                     default:
                         Toast.makeText(getApplicationContext(),"Somethings Wrong",Toast.LENGTH_SHORT).show();
                         return true;

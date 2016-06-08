@@ -17,6 +17,7 @@
     <string name="navigation_summary">Summary</string>
     <string name="navigation_history">History</string>
     <string name="navigation_setting">Setting</string>
+    <string name="navigation_chart">Chart</string>
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
 

@@ -21,5 +21,11 @@
             android:icon="@drawable/setting"
             android:title="@string/navigation_setting" />
 
+        <item
+            android:id="@+id/chart"
+            android:checked="false"
+            android:icon="@drawable/setting"
+            android:title="@string/navigation_chart" />
+
     </group>
 </menu>
