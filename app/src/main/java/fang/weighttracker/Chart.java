@@ -17,8 +17,15 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import fang.weighttracker.model.Weight;
+import fang.weighttracker.model.WeightLab;
 
 public class Chart extends AppCompatActivity {
+    private WeightLab weightLab = WeightLab.get(getApplication());
+    private List<Weight> weights = weightLab.getWeights();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +42,21 @@ public class Chart extends AppCompatActivity {
 
     }
     private ArrayList<ILineDataSet> getDataSet() {
+
+        List<Float> weights_value = new ArrayList<>() ;
+
         ArrayList<ILineDataSet> dataSets = null;
+
+        for(Weight weight:weights){
+            weights_value.add(Float.parseFloat(weight.getWeight()));
+        }
 
         ArrayList<Entry> valueSet1 = new ArrayList<>();
 
-        Entry v1e1 = new Entry(190.000f, 0); // Jan
-        valueSet1.add(v1e1);
-        Entry v1e2 = new Entry(180.000f, 1); // Feb
-        valueSet1.add(v1e2);
-        Entry v1e3 = new Entry(200.000f, 2); // Mar
-        valueSet1.add(v1e3);
-        Entry v1e4 = new Entry(170.000f, 3); // Apr
-        valueSet1.add(v1e4);
-        Entry v1e5 = new Entry(190.000f, 4); // May
-        valueSet1.add(v1e5);
-        Entry v1e6 = new Entry(180.000f, 5); // Jun
-        valueSet1.add(v1e6);
+        for(int i=weights_value.size()-1; i>=0; i--){
+            Entry v1e1 = new Entry(weights_value.get(i), i); // Add weight value into chart
+            valueSet1.add(v1e1);
+        }
 
 
         LineDataSet LineDataSet = new LineDataSet(valueSet1, "My Weights");
@@ -63,6 +69,8 @@ public class Chart extends AppCompatActivity {
 
     private ArrayList<String> getXAxisValues() {
         ArrayList<String> xAxis = new ArrayList<>();
+
+
         xAxis.add("SUN");
         xAxis.add("MON");
         xAxis.add("TUE");
