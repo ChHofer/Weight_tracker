@@ -65,21 +65,6 @@ public class Chart extends AppCompatActivity {
             Entry v1e1 = new Entry(weights_value.get(i),j); // Add weight value into chart
             valueSet1.add(v1e1);
         }
-/**
-        if(weights.size() < 7){
-            for(int i=0, j=0; i<=7; i++,j++){
-                Entry v1e1 = new Entry(weights_value.get(i),j); // Add weight value into chart
-                valueSet1.add(v1e1);
-            }
-        }else{
-
-            for(int i=weights_value.size()-1, j=0; i>=weights_value.size()-7; i--,j++) {
-
-                Entry v1e1 = new Entry(weights_value.get(i), j); // Add weight value into chart
-                valueSet1.add(v1e1);
-            }
-        }
-*/
 
         LineDataSet LineDataSet = new LineDataSet(valueSet1, "My Weights");
         LineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
