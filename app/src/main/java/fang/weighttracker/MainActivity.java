@@ -144,8 +144,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.bn_chart:
-                Intent chart_intent = new Intent(this, Chart.class);
-                startActivity(chart_intent);
+                WeightLab weightLab = WeightLab.get(getApplication());
+                List<Weight> weights = weightLab.getWeights();
+                if(weights.size() > 0){
+                    Intent chart_intent = new Intent(this, Chart.class);
+                    startActivity(chart_intent);
+                }else{
+                    Toast.makeText(getApplication(),
+                            "You do not have any weight records now. Please add your first weight entry. Start now!",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
                 return true;
             case R.id.bn_history:
                 Intent his_intent = new Intent(this, History.class);

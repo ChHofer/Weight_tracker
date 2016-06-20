@@ -37,7 +37,7 @@ public class Chart extends AppCompatActivity {
         LineData data = new LineData(getXAxisValues(), getDataSet());
         chart.setData(data);
         chart.setDescription("Weight Chart for recent 7 records");
-        chart.animateXY(2000, 2000);
+        chart.animateXY(500, 500);
         chart.invalidate();
 
 
@@ -54,10 +54,18 @@ public class Chart extends AppCompatActivity {
 
         ArrayList<Entry> valueSet1 = new ArrayList<>();
 
-        for(int i=weights_value.size()-1, j=0; i>=weights_value.size()-7; i--,j++){
+        if(weights.size() < 7){
+            for(int i=weights_value.size()-1, j=0; i>=0; i--,j++){
+                Entry v1e1 = new Entry(weights_value.get(i),j); // Add weight value into chart
+                valueSet1.add(v1e1);
+            }
+        }else{
 
-            Entry v1e1 = new Entry(weights_value.get(i), j); // Add weight value into chart
-            valueSet1.add(v1e1);
+            for(int i=weights_value.size()-1, j=0; i>=weights_value.size()-7; i--,j++) {
+
+                Entry v1e1 = new Entry(weights_value.get(i), j); // Add weight value into chart
+                valueSet1.add(v1e1);
+            }
         }
 
 
