@@ -143,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                         .newIntent(this, weight.getId());
                 startActivity(intent);
                 return true;
+            case R.id.bn_chart:
+                Intent chart_intent = new Intent(this, Chart.class);
+                startActivity(chart_intent);
+                return true;
             case R.id.bn_history:
                 Intent his_intent = new Intent(this, History.class);
                 startActivity(his_intent);
