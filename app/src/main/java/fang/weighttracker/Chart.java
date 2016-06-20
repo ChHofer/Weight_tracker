@@ -52,10 +52,22 @@ public class Chart extends AppCompatActivity {
             weights_value.add(Float.parseFloat(weight.getWeight()));
         }
 
+        if(weights_value.size() > 7){
+            int m = weights_value.size() - 7;
+            for(int n=(weights_value.size()-1),j=0; j<m; n--,j++) {
+                weights_value.remove(n);
+            }
+        }
+
         ArrayList<Entry> valueSet1 = new ArrayList<>();
 
+        for(int i=(weights_value.size()-1),j=0; i>=Math.max(0, weights_value.size()-7); i--,j++){
+            Entry v1e1 = new Entry(weights_value.get(i),j); // Add weight value into chart
+            valueSet1.add(v1e1);
+        }
+/**
         if(weights.size() < 7){
-            for(int i=weights_value.size()-1, j=0; i>=0; i--,j++){
+            for(int i=0, j=0; i<=7; i++,j++){
                 Entry v1e1 = new Entry(weights_value.get(i),j); // Add weight value into chart
                 valueSet1.add(v1e1);
             }
@@ -67,7 +79,7 @@ public class Chart extends AppCompatActivity {
                 valueSet1.add(v1e1);
             }
         }
-
+*/
 
         LineDataSet LineDataSet = new LineDataSet(valueSet1, "My Weights");
         LineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
