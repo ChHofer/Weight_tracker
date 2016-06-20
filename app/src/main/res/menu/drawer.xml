@@ -24,7 +24,7 @@
         <item
             android:id="@+id/chart"
             android:checked="false"
-            android:icon="@drawable/setting"
+            android:icon="@drawable/chart"
             android:title="@string/navigation_chart" />
 
     </group>

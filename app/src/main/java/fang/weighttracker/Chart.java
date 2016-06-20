@@ -36,7 +36,7 @@ public class Chart extends AppCompatActivity {
 
         LineData data = new LineData(getXAxisValues(), getDataSet());
         chart.setData(data);
-        chart.setDescription("Weight Chart");
+        chart.setDescription("Weight Chart for recent 7 records");
         chart.animateXY(2000, 2000);
         chart.invalidate();
 
@@ -73,13 +73,13 @@ public class Chart extends AppCompatActivity {
         ArrayList<String> xAxis = new ArrayList<>();
 
 
-        xAxis.add("SUN");
-        xAxis.add("MON");
-        xAxis.add("TUE");
-        xAxis.add("WED");
-        xAxis.add("THU");
-        xAxis.add("FRI");
-        xAxis.add("SAT");
+        xAxis.add("1");
+        xAxis.add("2");
+        xAxis.add("3");
+        xAxis.add("4");
+        xAxis.add("5");
+        xAxis.add("6");
+        xAxis.add("7");
         return xAxis;
     }
 

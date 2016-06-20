@@ -56,7 +56,9 @@
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".Chart">
+        <activity android:name=".Chart"
+                  android:label="@string/title_activity_chart"
+                  android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

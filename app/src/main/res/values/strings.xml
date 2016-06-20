@@ -6,6 +6,8 @@
     <string name="title_activity_history">History</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_weight_pager">Weight Pager</string>
+    <string name="title_activity_chart">Weight Chart</string>
+
 
     <!-- Splash view string-->
     <string name="welcome">Welcome</string>
