@@ -40,6 +40,7 @@ public class Chart extends AppCompatActivity {
         chart.animateXY(2000, 2000);
         chart.invalidate();
 
+
     }
     private ArrayList<ILineDataSet> getDataSet() {
 
@@ -53,8 +54,9 @@ public class Chart extends AppCompatActivity {
 
         ArrayList<Entry> valueSet1 = new ArrayList<>();
 
-        for(int i=weights_value.size()-1; i>=0; i--){
-            Entry v1e1 = new Entry(weights_value.get(i), i); // Add weight value into chart
+        for(int i=weights_value.size()-1, j=0; i>=weights_value.size()-7; i--,j++){
+
+            Entry v1e1 = new Entry(weights_value.get(i), j); // Add weight value into chart
             valueSet1.add(v1e1);
         }
 
